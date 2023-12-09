@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Adam Hijawy</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Adam Hijawy
+  * Updated: Nov 17 2023 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/Adam Hijawy-bootstrap-portfolio-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="index.html">Adam Hijawy</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+		  <li><a class="nav-link scrollto" href="#games">Games</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+
+         <!-- <li><a class="nav-link scrollto " href="#work">Work</a></li>
+          <li><a class="nav-link scrollto " href="#blog">Blog</a></li>
+          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+		  -->
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <div id="hero" class="hero route bg-image" style="background-image: url(assets/img/hero-bg.jpg)">
+    <div class="overlay-itro"></div>
+    <div class="hero-content display-table">
+      <div class="table-cell">
+        <div class="container">
+          <!--<p class="display-6 color-d">Hello, world!</p>-->
+          <h1 class="hero-title mb-4">I am Adam Hijawy</h1>
+		
+          <p class="hero-subtitle"><span class="typed" data-typed-items="Hero, Powerfull, Strong, Adam Hijawy,لاتنس ذكر الله"></span></p>
+		
+          <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
+        </div>
+	<!-- <a href="index.html" >link<img src="assets/img/logo.png"></a> -->
+      </div>  
+    </div> 
+	  		  </div><!-- End Hero Section -->
+
+		<section id="games" >
+			  <br></br>
+			  <p></p>
+
+                    <div class="input-group flex-nowrap">
+                        <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="addon-wrapping" id="search" oninput="searchOnInput()" />
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="addon-wrapping">🔍</span>
+                        </div>
+                    </div>
+                    <div id="list"></div>
+	<section id="about" >
+
+
+        <script src="./entries.js"></script>
+        <script>
+            // sort based on title
+            const sortedEntries = entries.sort((a, b) => (a.title > b.title ? 1 : b.title > a.title ? -1 : 0));
+
+            // create initial list
+            searchOnInput();
+
+            function searchOnInput() {
+                //get elements
+                const filter = document.getElementById("search").value.toLowerCase();
+                const list = document.getElementById("list");
+
+                // remove children
+                while (list.firstChild) {
+                    list.removeChild(list.firstChild);
+                }
+
+                // filter list
+                const filteredEntries = sortedEntries.filter((entry) => {
+                    let key;
+                    for (key in entry) {
+                        if (entry.hasOwnProperty(key)) {
+                            const prop = entry[key];
+                            if (typeof prop === "string" && prop.toLowerCase().includes(filter)) {
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
+                });
+
+                // create list
+                filteredEntries.forEach(({ title, description, filename, github, author, compatibleBrowsers, sponsored }) => {
+                    // horizontal rule
+                    const hr = document.createElement("hr");
+                    list.appendChild(hr);
+
+                    const card = document.createElement("div");
+                    card.className = "card";
+
+                    const body = document.createElement("div");
+                    body.className = "card-body";
+                    card.appendChild(body);
+
+                    // title
+                    const cardTitle = document.createElement("h5");
+                    const cardTitleNode = document.createTextNode(title);
+                    cardTitle.className = "card-title";
+                    cardTitle.appendChild(cardTitleNode);
+                    body.appendChild(cardTitle);
+
+                    // author
+                    if (author) {
+                        const authorSubtitle = document.createElement("h6");
+                        const authorSubtitleNode = document.createTextNode(author);
+                        authorSubtitle.className = "card-subtitle mb-2 text-muted";
+                        authorSubtitle.appendChild(authorSubtitleNode);
+
+                        // add a sponsor tag
+                        if (sponsored) {
+                            const sponsorEmoji = document.createElement("a");
+                            const sponsorEmojiNode = document.createTextNode(" ❤️");
+                            sponsorEmoji.href = "https://github.com/sponsors/hijawy";
+                            sponsorEmoji.title = "Sponsored Submission";
+                            sponsorEmoji.appendChild(sponsorEmojiNode);
+                            authorSubtitle.appendChild(sponsorEmoji);
+                        }
+
+                        // add an owner tag for myself
+                        if (author.includes("Christopher Powroznik")) {
+                            const ownerEmoji = document.createElement("a");
+                            const ownerEmojiNode = document.createTextNode(" 👑️");
+                            ownerEmoji.href = "https://github.com/hijawy";
+                            ownerEmoji.title = "Owner";
+                            ownerEmoji.appendChild(ownerEmojiNode);
+                            authorSubtitle.appendChild(ownerEmoji);
+                        }
+
+                        body.appendChild(authorSubtitle);
+                    }
+
+                    // description
+                    if (description) {
+                        const cardDescription = document.createElement("p");
+                        const cardDescriptionNode = document.createTextNode(description);
+                        cardDescription.className = "card-text";
+                        cardDescription.appendChild(cardDescriptionNode);
+                        body.appendChild(cardDescription);
+                    }
+
+                    // browser list
+                    if (compatibleBrowsers) {
+                        const browserList = document.createElement("p");
+                        const browser = compatibleBrowsers.join(", ");
+                        const browserNameNode = document.createTextNode(browser);
+                        browserList.className = "card-text";
+                        browserList.appendChild(browserNameNode);
+                        body.appendChild(browserList);
+                    }
+
+                    // toolbar
+                    const toolbar = document.createElement("div");
+                    const group1 = document.createElement("div");
+                    const group2 = document.createElement("div");
+                    toolbar.className = "btn-toolbar";
+                    group1.className = "btn-group mr-2";
+                    group2.className = "btn-group mr-2";
+                    toolbar.appendChild(group1);
+                    toolbar.appendChild(group2);
+                    body.appendChild(toolbar);
+
+                    // HTML Link
+                    const linkButton = document.createElement("a");
+                    const linkButtonNode = document.createTextNode(filename);
+                    linkButton.className = "btn btn-primary btn-md";
+                    linkButton.href = `./entries/${filename}`;
+                    linkButton.appendChild(linkButtonNode);
+                    linkButton.setAttribute("target", "_blank");
+                    group1.appendChild(linkButton);
+
+                    // Source Code Link
+                    const sourceCodeButton = document.createElement("a");
+                    const sourceCodeNode = document.createTextNode("Source");
+                    sourceCodeButton.className = "btn btn-secondary btn-md";
+                    sourceCodeButton.href = `https://github.com/hijawy/adam/blob/master/entries/${filename}`;
+                    sourceCodeButton.appendChild(sourceCodeNode);
+                    sourceCodeButton.setAttribute("target", "_blank");
+                    group1.appendChild(sourceCodeButton);
+
+
+        
+                    list.appendChild(card);
+                });
+            }
+        </script>
+</section>
+</section>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
